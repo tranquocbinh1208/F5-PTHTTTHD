@@ -1,4 +1,3 @@
-# F5-PTHTTTHD
 # Tên nhóm: F5
 # Thành viên 1: Trần Quốc Bình    - MSSV: 1542210 - Email: tranquocbinh1208@gmail.com
 # Thành viên 2: Dương Hiển Phú    - MSSV: 1542257 - Email: phucdth12a@gmail.com
