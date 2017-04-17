@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="910fecfc2c204f108b0ea2873b818718" Name="Diagram1">
+        <EntityTypeShape EntityType="BankManagermentModel.GiaoDichChuyenTien" Width="1.5" PointX="9.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.GiaoDichGoiTien" Width="1.5" PointX="12.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.GiaoDichGoiTienTietKiem" Width="1.5" PointX="9.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.GiaoDichRutTien" Width="1.5" PointX="12.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.KhachHang" Width="1.5" PointX="7.5" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.LoaiNhanVien" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.LoaiTruSo" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.NhanVien" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.SoTietKiem" Width="1.5" PointX="9.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.TaiKhoan" Width="1.5" PointX="9.75" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankManagermentModel.TruSo" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichChuyenTien_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichChuyenTien_KhachHang1" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichChuyenTien_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichGoiTien_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichGoiTien_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichGoiTienTietKiem_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichGoiTienTietKiem_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichRutTien_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_GiaoDichRutTien_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_KhachHang_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_SoTietKiem_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_TaiKhoan_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_NhanVien_LoaiNhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_TruSo_LoaiTruSo" ManuallyRouted="false" />
+        <AssociationConnector Association="BankManagermentModel.FK_NhanVien_TruSo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
