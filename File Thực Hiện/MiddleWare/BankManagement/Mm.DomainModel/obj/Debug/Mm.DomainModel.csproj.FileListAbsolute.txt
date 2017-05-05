@@ -1,0 +1,5 @@
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DomainModel\bin\Debug\Mm.DomainModel.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DomainModel\bin\Debug\Mm.DomainModel.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DomainModel\obj\Debug\Mm.DomainModel.csprojResolveAssemblyReference.cache
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DomainModel\obj\Debug\Mm.DomainModel.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DomainModel\obj\Debug\Mm.DomainModel.pdb
