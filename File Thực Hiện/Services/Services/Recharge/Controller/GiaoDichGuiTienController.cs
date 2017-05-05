@@ -9,7 +9,10 @@ namespace Recharge.Controller
     public class GiaoDichGuiTienController : ApiController
     {
         private DataContext db = new DataContext();
-
+        /// <summary>
+        /// Hàm api lấy tất cả giao dịch gửi tiền
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<GiaoDichGuiTien> LayTatCaGiaoDich()
         {
@@ -22,6 +25,11 @@ namespace Recharge.Controller
             }
             return null;
         }
+        /// <summary>
+        /// Hàm api lấy một giao dịch gửi tiền theo mã giao dịch
+        /// </summary>
+        /// <param name="maGD">mã giao dịch</param>
+        /// <returns></returns>
         [HttpGet]
         public GiaoDichGuiTien LayGiaoDichTheoMaGD(string maGD)
         {
@@ -35,6 +43,11 @@ namespace Recharge.Controller
             }
             return null;
         }
+        /// <summary>
+        /// Hàm api lấy các giao dịch gửi tiền theo một từ khóa
+        /// </summary>
+        /// <param name="tuKhoa">từ khóa</param>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<GiaoDichGuiTien> LayGiaoDichTheoTuKhoa(string tuKhoa)
         {
@@ -51,6 +64,12 @@ namespace Recharge.Controller
             }
             return null;
         }
+        /// <summary>
+        /// Hàm api lấy các giao dịch theo một khoảng thời gian
+        /// </summary>
+        /// <param name="tuNgay">ngày bắt đầu</param>
+        /// <param name="denNgay">ngày kết thúc</param>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<GiaoDichGuiTien> LayGiaoDichTheoNgay(DateTime tuNgay, DateTime denNgay)
         {
@@ -64,6 +83,11 @@ namespace Recharge.Controller
             }
             return null;
         }
+        /// <summary>
+        /// Hàm api thêm một giao dịch gửi tiền
+        /// </summary>
+        /// <param name="gd">giao dịch gửi tiền</param>
+        /// <returns></returns>
         [HttpPut]
         public GiaoDichGuiTien ThemGiaoDich(GiaoDichGuiTien gd)
         {
@@ -84,6 +108,11 @@ namespace Recharge.Controller
             }
             return null;
         }
+        /// <summary>
+        /// Hàm api hủy một giao dịch gửi tiền
+        /// </summary>
+        /// <param name="gd">giao dịch gửi tiền</param>
+        /// <returns></returns>
         [HttpPost]
         public GiaoDichGuiTien HuyGiaoDich(GiaoDichGuiTien gd)
         {
