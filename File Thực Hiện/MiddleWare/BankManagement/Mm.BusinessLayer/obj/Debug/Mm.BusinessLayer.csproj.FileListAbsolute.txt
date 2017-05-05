@@ -1,0 +1,11 @@
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\Mm.BusinessLayer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\Mm.BusinessLayer.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\Mm.DataAccessLayer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\Mm.DomainModel.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\EntityFramework.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\Mm.DataAccessLayer.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\Mm.DomainModel.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\bin\Debug\EntityFramework.xml
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\obj\Debug\Mm.BusinessLayer.csprojResolveAssemblyReference.cache
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\obj\Debug\Mm.BusinessLayer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.BusinessLayer\obj\Debug\Mm.BusinessLayer.pdb

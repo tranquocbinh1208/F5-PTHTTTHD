@@ -1,0 +1,15 @@
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\MyTest.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\MyTest.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\obj\Debug\MyTest.csprojResolveAssemblyReference.cache
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\obj\Debug\MyTest.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\obj\Debug\MyTest.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Mm.BusinessLayer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Mm.DomainModel.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Mm.DataAccessLayer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\EntityFramework.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Mm.BusinessLayer.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Mm.DomainModel.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\Mm.DataAccessLayer.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\MyTest\bin\Debug\EntityFramework.xml

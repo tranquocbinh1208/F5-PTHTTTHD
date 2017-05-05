@@ -1,0 +1,12 @@
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\Mm.DataAccessLayer.dll.config
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\Mm.DataAccessLayer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\Mm.DataAccessLayer.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\EntityFramework.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\EntityFramework.xml
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\obj\Debug\Mm.DataAccessLayer.csprojResolveAssemblyReference.cache
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\obj\Debug\Mm.DataAccessLayer.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\obj\Debug\Mm.DataAccessLayer.pdb
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\Mm.DomainModel.dll
+E:\1HCDH\HK4\PhatTrienHTTTHienDai\DoAn\BankManagement\Mm.DataAccessLayer\bin\Debug\Mm.DomainModel.pdb
