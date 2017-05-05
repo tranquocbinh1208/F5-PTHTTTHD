@@ -13,62 +13,96 @@ namespace Recharge.Controller
         [HttpGet]
         public IEnumerable<GiaoDichGuiTien> LayTatCaGiaoDich()
         {
-            return db.GiaoDichGuiTiens;
+            try
+            {
+                return db.GiaoDichGuiTiens;
+            }
+            catch (Exception)
+            {
+            }
+            return null;
         }
         [HttpGet]
         public GiaoDichGuiTien LayGiaoDichTheoMaGD(string maGD)
         {
-            if (!string.IsNullOrEmpty(maGD))
-                return db.GiaoDichGuiTiens.Where(a=>a.MaGD == maGD).FirstOrDefault();
-
+            try
+            {
+                if (!string.IsNullOrEmpty(maGD))
+                    return db.GiaoDichGuiTiens.Where(a => a.MaGD == maGD).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+            }
             return null;
         }
         [HttpGet]
         public IEnumerable<GiaoDichGuiTien> LayGiaoDichTheoTuKhoa(string tuKhoa)
         {
-            return db.GiaoDichGuiTiens.Where(a =>
-                (a.HoTenNguoiGoi + a.CMND + a.SDT + a.Diachi + a.SoTien + a.NoiDung)
-                .ToLower()
-                .Contains((tuKhoa ?? string.Empty).ToLower())
-            );
+            try
+            {
+                return db.GiaoDichGuiTiens.Where(a =>
+                    (a.HoTenNguoiGoi + a.CMND + a.SDT + a.Diachi + a.SoTien + a.NoiDung)
+                    .ToLower()
+                    .Contains((tuKhoa ?? string.Empty).ToLower())
+                );
+            }
+            catch (Exception)
+            {
+            }
+            return null;
         }
         [HttpGet]
         public IEnumerable<GiaoDichGuiTien> LayGiaoDichTheoNgay(DateTime tuNgay, DateTime denNgay)
         {
-            if (tuNgay != null && denNgay != null)
-                return db.GiaoDichGuiTiens.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay);
-
+            try
+            {
+                if (tuNgay != null && denNgay != null)
+                    return db.GiaoDichGuiTiens.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay);
+            }
+            catch (Exception)
+            {
+            }
             return null;
         }
         [HttpPut]
         public GiaoDichGuiTien ThemGiaoDich(GiaoDichGuiTien gd)
         {
-            if (ModelState.IsValid && gd != null)
+            try
             {
-                gd.MaGD = AppUtils.GetTransactionID(DateTime.Now);
-                gd.TrangThai = TrangThaiGiaoDich.DangXuLy;
+                if (ModelState.IsValid && gd != null)
+                {
+                    gd.MaGD = AppUtils.GetTransactionID(DateTime.Now);
+                    gd.TrangThai = TrangThaiGiaoDich.DangXuLy;
 
-                db.GiaoDichGuiTiens.Add(gd);
-                db.SaveChanges();
-                return gd;
+                    db.GiaoDichGuiTiens.Add(gd);
+                    db.SaveChanges();
+                    return gd;
+                }
             }
-
+            catch (Exception)
+            {
+            }
             return null;
         }
         [HttpPost]
         public GiaoDichGuiTien HuyGiaoDich(GiaoDichGuiTien gd)
         {
-            if (ModelState.IsValid && gd != null)
+            try
             {
-                var giaoDich = db.GiaoDichGuiTiens.Where(a => a.MaGD == gd.MaGD).FirstOrDefault();
-                if (giaoDich != null)
+                if (ModelState.IsValid && gd != null)
                 {
-                    giaoDich.TrangThai = TrangThaiGiaoDich.Huy;
-                    db.SaveChanges();
-                    return gd;
+                    var giaoDich = db.GiaoDichGuiTiens.Where(a => a.MaGD == gd.MaGD).FirstOrDefault();
+                    if (giaoDich != null)
+                    {
+                        giaoDich.TrangThai = TrangThaiGiaoDich.Huy;
+                        db.SaveChanges();
+                        return gd;
+                    }
                 }
             }
-
+            catch (Exception)
+            {
+            }
             return null;
         }
     }
