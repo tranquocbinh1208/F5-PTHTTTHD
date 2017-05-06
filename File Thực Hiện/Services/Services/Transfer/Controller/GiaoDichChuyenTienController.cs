@@ -116,15 +116,21 @@ namespace Transfer.Controller
         [HttpPost]
         public GiaoDichChuyenTien HuyGiaoDich(GiaoDichChuyenTien gd)
         {
-            if (ModelState.IsValid && gd != null)
+            try
             {
-                var giaoDich = db.GiaoDichChuyenTiens.Where(a => a.MaGD == gd.MaGD).FirstOrDefault();
-                if (giaoDich != null)
+                if (ModelState.IsValid && gd != null)
                 {
-                    giaoDich.TrangThai = TrangThaiGiaoDich.Huy;
-                    db.SaveChanges();
-                    return gd;
+                    var giaoDich = db.GiaoDichChuyenTiens.Where(a => a.MaGD == gd.MaGD).FirstOrDefault();
+                    if (giaoDich != null)
+                    {
+                        giaoDich.TrangThai = TrangThaiGiaoDich.Huy;
+                        db.SaveChanges();
+                        return gd;
+                    }
                 }
+            }
+            catch (Exception)
+            {
             }
             return null;
         }
