@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,14 +8,6 @@ using System.Threading.Tasks;
 
 namespace Recharge.Model
 {
-    public enum TrangThaiGiaoDich
-    {
-        DangXuLy = 0,
-        ThanhCong = 1,
-        ThatBai = 2,
-        Huy = 3
-    }
-
     public class GiaoDichGuiTien
     {
         [Key]

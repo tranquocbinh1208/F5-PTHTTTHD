@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{838FFE56-02EB-4B58-9BFB-13D88D694DAB}</ProjectGuid>
+    <ProjectGuid>{EB5D34F0-3189-4814-97E5-6178978C1D35}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Transfer</RootNamespace>
-    <AssemblyName>Transfer</AssemblyName>
+    <RootNamespace>CashWithdraw</RootNamespace>
+    <AssemblyName>CashWithdraw</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -74,9 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\GiaoDichChuyenTienController.cs" />
-    <Compile Include="Model\DataContext.cs" />
-    <Compile Include="Model\GiaoDichChuyenTien.cs" />
+    <Compile Include="Model\GiaoDichRutTien.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -84,6 +82,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

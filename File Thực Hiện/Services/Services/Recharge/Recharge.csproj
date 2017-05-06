@@ -74,7 +74,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppUtils.cs" />
     <Compile Include="Controller\GiaoDichGuiTienController.cs" />
     <Compile Include="Model\DataContext.cs" />
     <Compile Include="Model\GiaoDichGuiTien.cs" />
@@ -85,6 +84,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{52c922b4-8edf-45c8-968e-66ffffbddf5a}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

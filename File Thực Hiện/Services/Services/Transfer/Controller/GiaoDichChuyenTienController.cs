@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -95,7 +96,7 @@ namespace Transfer.Controller
             {
                 if (ModelState.IsValid && gd != null)
                 {
-                    gd.MaGD = AppUtils.GetTransactionID(DateTime.Now);
+                    gd.MaGD = AppUtils.GetTransactionID(LoaiGiaoDich.ChuyenTien, DateTime.Now);
                     gd.TrangThai = TrangThaiGiaoDich.DangXuLy;
 
                     db.GiaoDichChuyenTiens.Add(gd);

@@ -1,22 +1,16 @@
 ﻿using Common;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Transfer.Model
+namespace CashWithdraw.Model
 {
-    public class GiaoDichChuyenTien
+    public class GiaoDichRutTien
     {
         [Key]
         [Required]
         public string MaGD { get; set; }
         [Required]
-        public string MaKHGui { get; set; }
-        [Required]
-        public string MaKHNhan { get; set; }
+        public string MaKH { get; set; }
         [Required]
         public decimal SoTien { get; set; }
         [Required]
