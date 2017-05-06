@@ -18,6 +18,13 @@ namespace Transfer.Controller
         [HttpGet]
         public IEnumerable<GiaoDichChuyenTien> LayTatCaGiaoDich()
         {
+            try
+            {
+                return db.GiaoDichChuyenTiens;
+            }
+            catch (Exception)
+            {
+            }
             return null;
         }
         /// <summary>
@@ -28,6 +35,13 @@ namespace Transfer.Controller
         [HttpGet]
         public GiaoDichChuyenTien LayGiaoDichTheoMaGD(string maGD)
         {
+            try
+            {
+                return db.GiaoDichChuyenTiens.Where(a => a.MaGD == maGD).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+            }
             return null;
         }
         /// <summary>
@@ -38,6 +52,17 @@ namespace Transfer.Controller
         [HttpGet]
         public IEnumerable<GiaoDichChuyenTien> LayGiaoDichTheoTuKhoa(string tuKhoa)
         {
+            try
+            {
+                return db.GiaoDichChuyenTiens.Where(a =>
+                    (a.SoTien + a.NoiDung)
+                    .ToLower()
+                    .Contains((tuKhoa ?? string.Empty).ToLower())
+                );
+            }
+            catch (Exception)
+            {
+            }
             return null;
         }
         /// <summary>
@@ -49,6 +74,13 @@ namespace Transfer.Controller
         [HttpGet]
         public IEnumerable<GiaoDichChuyenTien> LayGiaoDichTheoNgay(DateTime tuNgay, DateTime denNgay)
         {
+            try
+            {
+                return db.GiaoDichChuyenTiens.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay);
+            }
+            catch (Exception)
+            {
+            }
             return null;
         }
         /// <summary>
@@ -59,6 +91,21 @@ namespace Transfer.Controller
         [HttpPut]
         public GiaoDichChuyenTien ThemGiaoDich(GiaoDichChuyenTien gd)
         {
+            try
+            {
+                if (ModelState.IsValid && gd != null)
+                {
+                    gd.MaGD = AppUtils.GetTransactionID(DateTime.Now);
+                    gd.TrangThai = TrangThaiGiaoDich.DangXuLy;
+
+                    db.GiaoDichChuyenTiens.Add(gd);
+                    db.SaveChanges();
+                    return gd;
+                }
+            }
+            catch (Exception)
+            {
+            }
             return null;
         }
         /// <summary>
@@ -69,6 +116,16 @@ namespace Transfer.Controller
         [HttpPost]
         public GiaoDichChuyenTien HuyGiaoDich(GiaoDichChuyenTien gd)
         {
+            if (ModelState.IsValid && gd != null)
+            {
+                var giaoDich = db.GiaoDichChuyenTiens.Where(a => a.MaGD == gd.MaGD).FirstOrDefault();
+                if (giaoDich != null)
+                {
+                    giaoDich.TrangThai = TrangThaiGiaoDich.Huy;
+                    db.SaveChanges();
+                    return gd;
+                }
+            }
             return null;
         }
     }

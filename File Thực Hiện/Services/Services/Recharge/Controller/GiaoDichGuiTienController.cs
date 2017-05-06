@@ -35,8 +35,7 @@ namespace Recharge.Controller
         {
             try
             {
-                if (!string.IsNullOrEmpty(maGD))
-                    return db.GiaoDichGuiTiens.Where(a => a.MaGD == maGD).FirstOrDefault();
+                return db.GiaoDichGuiTiens.Where(a => a.MaGD == maGD).FirstOrDefault();
             }
             catch (Exception)
             {
@@ -75,8 +74,7 @@ namespace Recharge.Controller
         {
             try
             {
-                if (tuNgay != null && denNgay != null)
-                    return db.GiaoDichGuiTiens.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay);
+                return db.GiaoDichGuiTiens.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay);
             }
             catch (Exception)
             {

@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppUtils.cs" />
     <Compile Include="Controller\GiaoDichChuyenTienController.cs" />
     <Compile Include="Model\DataContext.cs" />
     <Compile Include="Model\GiaoDichChuyenTien.cs" />
