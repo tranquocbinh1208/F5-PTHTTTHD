@@ -2,7 +2,6 @@
 using System;
 using System.Configuration;
 
-
 namespace CashWithdraw
 {
     class Program

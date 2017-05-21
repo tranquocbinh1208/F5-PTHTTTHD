@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common
 {
@@ -20,6 +16,7 @@ namespace Common
             return money.ToString("#,##0");
         }
 
+        public static readonly string DateFormat_yyyy_mm_dd_hh_mm_ss = "yyyy-mm-dd, HH:mm:ss";
         #endregion
     }
 }
