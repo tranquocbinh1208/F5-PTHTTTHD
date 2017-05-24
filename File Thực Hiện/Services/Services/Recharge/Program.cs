@@ -8,7 +8,7 @@ namespace Recharge
     {
         static void Main(string[] args)
         {
-            string baseAddress = $"http://localhost:{ConfigurationManager.AppSettings["port"] ?? "9000"}/";
+            string baseAddress = $"http://localhost:{ConfigurationManager.AppSettings["port"] ?? "9002"}/";
 
             using (WebApp.Start<Startup>(url: baseAddress))
             {

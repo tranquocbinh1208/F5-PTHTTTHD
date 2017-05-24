@@ -8,7 +8,7 @@ namespace Transfer
     {
         static void Main(string[] args)
         {
-            string baseAddress = $"http://localhost:{ConfigurationManager.AppSettings["port"] ?? "9001"}/";
+            string baseAddress = $"http://localhost:{ConfigurationManager.AppSettings["port"] ?? "9003"}/";
 
             using (WebApp.Start<Startup>(url: baseAddress))
             {
