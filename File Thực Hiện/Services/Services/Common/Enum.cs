@@ -14,4 +14,12 @@
         RutTien = 1,
         ChuyenTien = 2
     }
+
+    public enum TrangThaiKhachHang
+    {
+        MoiTao = 0,
+        DaKichHoat = 1,
+        TamKhoa = 2,
+        NoXau = 3
+    }
 }
