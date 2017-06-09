@@ -6,10 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CreateSaveAccount.Controller
 {
-    class GiaoDichLapSoTietKiemController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class GiaoDichLapSoTietKiemController : ApiController
     {
         private DataContext db = new DataContext();
         /// <summary>
@@ -98,6 +100,7 @@ namespace CreateSaveAccount.Controller
                 {
                     gd.MaGD = AppUtils.GetTransactionID(LoaiGiaoDich.ChuyenTien, DateTime.Now);
                     gd.TrangThai = TrangThaiGiaoDich.DangXuLy;
+                    gd.NgayTao = DateTime.Now;
 
                     db.GiaoDichLapSoTietKiems.Add(gd);
                     db.SaveChanges();

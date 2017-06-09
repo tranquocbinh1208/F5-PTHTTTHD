@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Transfer.Model;
 
 namespace Transfer.Controller
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GiaoDichChuyenTienController : ApiController
     {
         private DataContext db = new DataContext();
@@ -96,6 +98,7 @@ namespace Transfer.Controller
                 {
                     gd.MaGD = AppUtils.GetTransactionID(LoaiGiaoDich.ChuyenTien, DateTime.Now);
                     gd.TrangThai = TrangThaiGiaoDich.DangXuLy;
+                    gd.NgayTao = DateTime.Now;
 
                     db.GiaoDichChuyenTiens.Add(gd);
                     db.SaveChanges();

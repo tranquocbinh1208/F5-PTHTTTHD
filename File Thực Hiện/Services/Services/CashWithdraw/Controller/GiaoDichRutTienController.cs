@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CashWithdraw.Controller
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GiaoDichRutTienController : ApiController
     {
         private DataContext db = new DataContext();
@@ -96,6 +98,7 @@ namespace CashWithdraw.Controller
                 {
                     gd.MaGD = AppUtils.GetTransactionID(LoaiGiaoDich.RutTien, DateTime.Now);
                     gd.TrangThai = TrangThaiGiaoDich.DangXuLy;
+                    gd.NgayTao = DateTime.Now;
 
                     db.GiaoDichRutTiens.Add(gd);
                     db.SaveChanges();

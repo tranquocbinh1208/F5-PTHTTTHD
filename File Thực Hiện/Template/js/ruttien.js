@@ -1,5 +1,5 @@
 //RÚT TIỀN
-let isDebug = true
+let isDebug = false
 let emptyString = ''
 let emptyObject = {}
 let warning = 'alert-warning'
@@ -15,10 +15,25 @@ $(function () {
 
     var rutTienApp = new Vue({
         el: '#rutTienApp',
+
         data: {
-            khachHang: emptyObject,
-            taiKhoan: emptyObject,
-            giaoDich: emptyObject,
+            khachHang: {
+                MaKH: emptyString,
+                HoTen: emptyString,
+                CMND: emptyString
+            },
+            taiKhoan: {
+                MaSoTaiKhoan: emptyString,
+                MaKH: emptyString,
+                SoDuThuc: 0,
+                SoDuKhaDung: 0
+            },
+            giaoDich: {
+                MaKH: emptyString,
+                SoTien: emptyString,
+                NoiDung: emptyString,
+                MaNV: emptyString
+            },
             message: {
                 content: emptyString,
                 type: warning
@@ -29,8 +44,10 @@ $(function () {
             },
             cmnd: emptyString,
         },
+
         methods: {
-            kiemTraTaiKhoan () {
+
+            kiemTraTaiKhoan() {
                 if (!isNullOrEmptyString(this.cmnd)) {
                     if (isDebug) {
                         let kh = {
@@ -51,31 +68,42 @@ $(function () {
                         }
                         this.taiKhoan = tk
                         this.display.account = true
-                    }
-                    else {
+                    } else {
                         //Lấy khách hàng
+                        let kh = {}
+                        let tk = {}
+
                         $.get('http://localhost:9006/api/khachhang/LayKhachHangTheoCMND?CMND=' + this.cmnd, function (response) {
-                            console.log(response);
                             if (response != null) {
-                                //TODO hiển thị khách hàng
+                                kh = response
+                                console.log(kh)
+
                                 //Lấy tài khoản theo khách hàng
-                                //hiển thị tài khoản
+                                $.get('http://localhost:9007/api/TaiKhoan/LayTaiKhoanTheoMaKH?MaKH=' + kh.MaKH, function (response2) {
+                                    if (response2 != null) {
+                                        tk = response2
+                                        console.log(tk)
+                                    }
+                                })
                             }
                         })
+
+                        this.khachHang = kh
+                        this.taiKhoan = tk
+                        this.display.account = true
+                        this.display.customer = true
                     }
-                }
-                else {
+                } else {
                     this.clear()
                 }
             },
-            rutTien () {
-                //console.log(this.giaoDich);
+
+            rutTien() {
                 if (this.message.content == emptyString) {
                     if (isDebug) {
                         this.message.content = 'Giao dịch đã thực hiện thành công'
                         this.message.type = success
-                    }
-                    else {
+                    } else {
                         $.post('http://localhost:9006/api/giaodichruttien/themgiaodich', this.giaoDich, function (response) {
                             console.log(response);
                             if (response != null) {
@@ -89,7 +117,8 @@ $(function () {
                     }
                 }
             },
-            validate () {
+
+            validate() {
                 this.message.content = emptyString
                 this.message.type = warning
 
@@ -100,7 +129,8 @@ $(function () {
                     this.message.content += "Số tiền trong tài khoản không đủ để thực hiện giao dịch này \n"
                 }
             },
-            clear () {
+
+            clear() {
                 this.khachHang = emptyObject
                 this.taiKhoan = emptyObject
                 this.giaoDich = emptyObject

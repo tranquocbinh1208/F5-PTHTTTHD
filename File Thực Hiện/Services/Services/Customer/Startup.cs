@@ -8,6 +8,9 @@ namespace Customer
         public void Configuration(IAppBuilder appBuilder)
         {
             HttpConfiguration config = new HttpConfiguration();
+
+            config.EnableCors();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",

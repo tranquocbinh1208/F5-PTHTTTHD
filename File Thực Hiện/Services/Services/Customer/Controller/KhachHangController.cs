@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Customer.Controller
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class KhachHangController : ApiController
     {
         private DataContext db = new DataContext();

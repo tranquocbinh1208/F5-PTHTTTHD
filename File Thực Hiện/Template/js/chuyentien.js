@@ -58,14 +58,13 @@ $(function () {
 
             },
             clear() {
-                
+
             },
             kiemTraTaiKhoanGui() {
                 if (isDebug) {
                     this.nguoiGui.HoTen = "Mai Van Truong"
                     this.nguoiGui.CMND = "321494498"
-                }
-                else {
+                } else {
                     //TODO
                 }
             },
@@ -77,8 +76,7 @@ $(function () {
                     if (this.nguoiGui != emptyObject && this.nguoiNhan != emptyObject) {
                         this.display.soTienChuyen = true
                     }
-                }
-                else {
+                } else {
                     //TODO
                 }
             },
