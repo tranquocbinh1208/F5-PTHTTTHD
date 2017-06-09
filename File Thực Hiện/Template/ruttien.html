@@ -14,7 +14,7 @@
     <link href="css/mystyle.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/myjs.js"></script>
+    <script src="js/ruttien.js"></script>
     <script src="https://unpkg.com/vue"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,13 +59,13 @@
                 <li><a data-placement="bottom" data-toggle="tooltip" href="baocao.html" data-original-title="Thống kê"><i class="fa fa-bar-chart-o"></i></a></li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-user"></i> Admin User <b class="fa fa-angle-down"></b></a>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-user"></i> Admin User <b class="fa fa-angle-down"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="chinhsuathongtin.html"><i class="fa fa-fw fa-pencil"></i> Chỉnh sửa thông tin</a></li>
 
                         <li class="divider"></li>
 
-                        <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Đăng xuất</a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-fw fa-power-off"></i> Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
@@ -90,7 +90,7 @@
                     </li>
 
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-line-chart"></i> Báo cáo thống kê <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-line-chart"></i> Báo cáo thống kê <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                         <ul id="submenu-1" class="collapse">
                             <li><a href="baocaothang.html"><i class="fa fa-angle-right"></i> Theo tháng</a></li>
                             <li><a href="baocaonam.html"><i class="fa fa-angle-right"></i> Theo năm</a></li>
@@ -117,12 +117,12 @@
                     <fieldset>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="txtCMND">Số CMND</label>
+                            <label class="col-md-4 control-label">Số CMND</label>
                             <div class="col-md-5">
                                 <div class="input-group input-group-md">
-                                    <input id="txtCMND" name="txtCMND" type="text" placeholder="Nhập số CMND" class="form-control input-md" v-model="cmnd">
+                                    <input type="text" placeholder="Nhập số CMND" class="form-control input-md" v-model="cmnd" v-on:blur="kiemTraTaiKhoan">
                                     <div class="input-group-btn">
-                                        <button id="btnKiemTraTaiKhoan" name="btnKiemTraTaiKhoan" class="btn full-width" v-on:click="kiemTraTaiKhoan">Kiểm tra</button>
+                                        <button type="button" class="btn full-width" v-on:click="kiemTraTaiKhoan">Kiểm tra</button>
                                     </div>
                                     <!-- /btn-group -->
                                 </div>
@@ -130,51 +130,55 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="txtTaiKhoanRut">Tên khách hàng</label>
+                        <div class="form-group" v-show="display.customer">
+                            <label class="col-md-4 control-label">Tên khách hàng</label>
                             <div class="col-md-5">
-                                <input readonly id="txtTaiKhoanRut" name="txtTaiKhoanRut" type="text" placeholder="Tên khách hàng" v-bind:value="cmnd" class="form-control input-md"
-                                    required="">
+                                <input readonly type="text" placeholder="Tên khách hàng" class="form-control input-md" v-model="khachHang.HoTen">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="txtTaiKhoanRut">Số tài khoản</label>
+                        <div class="form-group" v-show="display.account">
+                            <label class="col-md-4 control-label">Số tài khoản</label>
                             <div class="col-md-5">
-                                <input readonly id="txtTaiKhoanRut" name="txtTaiKhoanRut" type="text" placeholder="Nhập số tài khoản" class="form-control input-md"
-                                    required="">
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="txtSoDuKhaDung">Số dư khả dụng</label>
-                            <div class="col-md-5">
-                                <input readonly id="txtSoDuKhaDung" name="txtSoDuKhaDung" type="text" placeholder="Số dư khả dụng" class="form-control input-md"
-                                    required="">
+                                <input readonly type="text" placeholder="Số tài khoản" class="form-control input-md" v-model="taiKhoan.MaSoTaiKhoan">
                             </div>
                         </div>
 
                         <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="txtSoTienRut">Số tiền rút</label>
+                        <div class="form-group" v-show="display.account">
+                            <label class="col-md-4 control-label">Số dư khả dụng</label>
                             <div class="col-md-5">
-                                <input id="txtSoTienRut" name="txtSoTienRut" type="text" placeholder="Nhập số tiền" class="form-control input-md" required="">
+                                <input readonly type="number" placeholder="Số dư khả dụng" class="form-control input-md" v-model="taiKhoan.SoDuKhaDung">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="txtNoiDung">Nội dung</label>
+                        <!-- Text input-->
+                        <div class="form-group" v-show="display.account">
+                            <label class="col-md-4 control-label">Số tiền rút</label>
                             <div class="col-md-5">
-                                <input id="txtNoiDung" name="txtNoiDung" type="text" placeholder="Nhập nội dung" class="form-control input-md" required="">
+                                <input type="number" placeholder="Nhập số tiền" class="form-control input-md" v-model="giaoDich.SoTien" v-on:blur="validate">
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" v-show="display.account">
+                            <label class="col-md-4 control-label">Nội dung</label>
+                            <div class="col-md-5">
+                                <input type="text" placeholder="Nhập nội dung" class="form-control input-md" v-model="giaoDich.NoiDung">
+                            </div>
+                        </div>
+
+                        <div class="form-group" v-show="message.content != ''">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-5">
+                                <div class="alert" v-bind:class="message.type">{{message.content}}</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" v-show="display.account">
                             <label class="col-md-4 control-label" for="btnRutTien"></label>
                             <div class="col-md-8">
-                                <button id="btnRutTien" name="btnRutTien" class="btn btn-primary" v-on:click="rutTien">Rút tiền</button>
-                                <button id="btnHuy" name="btnHuy" class="btn btn-default">Huỷ</button>
+                                <button type="button" class="btn btn-primary" v-on:click="rutTien">Rút tiền</button>
+                                <button type="button" class="btn btn-default" v-on:click="clear">Giao dịch mới</button>
                             </div>
                         </div>
 

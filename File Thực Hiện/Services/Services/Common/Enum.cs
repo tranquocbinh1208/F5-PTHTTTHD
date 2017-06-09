@@ -22,4 +22,11 @@
         TamKhoa = 2,
         NoXau = 3
     }
+
+    public enum TrangThaiTaiKhoan
+    {
+        MoiTao = 0,
+        DaKichHoat = 1,
+        TamKhoa = 2,
+    }
 }

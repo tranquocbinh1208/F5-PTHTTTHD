@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recharge", "Recharge\Recharge.csproj", "{3A65E149-EE1D-411C-AF3C-7E9B2F3D79AB}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSaveAccount", "CreateSaveAccount\CreateSaveAccount.csproj", "{6A84C7C5-FE63-4C45-9B2F-368CDDEB386E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer", "Customer\Customer.csproj", "{18C734DF-F4A9-4CA7-9725-D153B02291C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account", "Account\Account.csproj", "{7CB36520-927D-4074-ADC4-53F853402113}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{18C734DF-F4A9-4CA7-9725-D153B02291C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C734DF-F4A9-4CA7-9725-D153B02291C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C734DF-F4A9-4CA7-9725-D153B02291C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB36520-927D-4074-ADC4-53F853402113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB36520-927D-4074-ADC4-53F853402113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB36520-927D-4074-ADC4-53F853402113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB36520-927D-4074-ADC4-53F853402113}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
