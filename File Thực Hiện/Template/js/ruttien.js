@@ -34,7 +34,7 @@ $(function () {
                 MaGD: "GD",
                 MaKH: emptyString,
                 SoTien: emptyString,
-                NoiDung: emptyString,
+                NoiDung: "Rut tien",
                 MaNV: loggedUserId,
                 NgayTao: new Date(),
                 TrangThai: 0
@@ -80,6 +80,8 @@ $(function () {
                             } else {
                                 this.message.content = 'Không tìm thấy thông tin'
                                 this.message.type = info
+                                this.display.customer = false
+                                this.display.account = false
                             }
                         })
                         .catch(e => {
@@ -141,12 +143,18 @@ $(function () {
                 if (this.giaoDich.SoTien > this.taiKhoan.SoDuKhaDung) {
                     this.message.content += "Số tiền trong tài khoản không đủ để thực hiện giao dịch này \n"
                 }
+                if (isNullOrEmptyString(this.giaoDich.NoiDung)) {
+                    this.message.content += "Vui lòng nhập nội dung giao dịch \n"
+                }
             },
 
             clear() {
                 this.khachHang = emptyObject
                 this.taiKhoan = emptyObject
-                this.giaoDich = emptyObject
+
+                this.giaoDich.MaKH = emptyString
+                this.giaoDich.SoTien = 0
+
                 this.display.customer = false
                 this.display.account = false
                 this.message.content = emptyString
