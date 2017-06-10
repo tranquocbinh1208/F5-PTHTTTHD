@@ -19,8 +19,9 @@ namespace Customer.Controller
             {
                 return db.KhachHangs;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -32,8 +33,9 @@ namespace Customer.Controller
             {
                 return db.KhachHangs.Where(a => a.MaKH == maKH).FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -45,8 +47,9 @@ namespace Customer.Controller
             {
                 return db.KhachHangs.Where(a => a.CMND == CMND).FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }

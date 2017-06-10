@@ -19,8 +19,9 @@ namespace Account.Controller
             {
                 return db.TaiKhoans;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -32,8 +33,30 @@ namespace Account.Controller
             {
                 return db.TaiKhoans.Where(a => a.MaKH.ToLower() == MaKH.ToLower().Trim()).FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public TaiKhoan RutTien(TaiKhoan taiKhoan)
+        {
+            try
+            {
+                var tk = db.TaiKhoans.Where(a => a.MaSoTaiKhoan.ToLower().Trim() == taiKhoan.MaSoTaiKhoan.ToLower().Trim()).FirstOrDefault();
+                if (tk != null)
+                {
+                    tk.SoDuKhaDung = taiKhoan.SoDuKhaDung;
+                    tk.SoDuThuc = taiKhoan.SoDuThuc;
+                    db.SaveChanges();
+                    return tk;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }

@@ -25,8 +25,9 @@ namespace CreateSaveAccount.Controller
             {
                 return db.GiaoDichLapSoTietKiems;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -42,8 +43,9 @@ namespace CreateSaveAccount.Controller
             {
                 return db.GiaoDichLapSoTietKiems.Where(a => a.MaGD == maGD).FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -63,8 +65,9 @@ namespace CreateSaveAccount.Controller
                     .Contains((tuKhoa ?? string.Empty).ToLower())
                 );
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -81,8 +84,9 @@ namespace CreateSaveAccount.Controller
             {
                 return db.GiaoDichLapSoTietKiems.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -107,8 +111,9 @@ namespace CreateSaveAccount.Controller
                     return gd;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -133,8 +138,9 @@ namespace CreateSaveAccount.Controller
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }

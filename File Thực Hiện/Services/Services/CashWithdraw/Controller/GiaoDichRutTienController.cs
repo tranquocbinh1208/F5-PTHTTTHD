@@ -23,8 +23,9 @@ namespace CashWithdraw.Controller
             {
                 return db.GiaoDichRutTiens;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -40,8 +41,9 @@ namespace CashWithdraw.Controller
             {
                 return db.GiaoDichRutTiens.Where(a => a.MaGD == maGD).FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -61,8 +63,9 @@ namespace CashWithdraw.Controller
                     .Contains((tuKhoa ?? string.Empty).ToLower())
                 );
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -79,8 +82,9 @@ namespace CashWithdraw.Controller
             {
                 return db.GiaoDichRutTiens.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
@@ -105,8 +109,9 @@ namespace CashWithdraw.Controller
                     return gd;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.Write(ex.Message);
             }
             return null;
         }
@@ -131,8 +136,9 @@ namespace CashWithdraw.Controller
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return null;
         }
