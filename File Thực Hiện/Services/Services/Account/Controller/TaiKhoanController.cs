@@ -27,11 +27,25 @@ namespace Account.Controller
         }
 
         [HttpGet]
+        public TaiKhoan LayTaiKhoanTheoSoTaiKhoan(string soTK)
+        {
+            try
+            {
+                return db.TaiKhoans.Where(a => a.MaSoTaiKhoan.ToUpper() == soTK.ToUpper().Trim()).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        [HttpGet]
         public TaiKhoan LayTaiKhoanTheoMaKH(string MaKH)
         {
             try
             {
-                return db.TaiKhoans.Where(a => a.MaKH.ToLower() == MaKH.ToLower().Trim()).FirstOrDefault();
+                return db.TaiKhoans.Where(a => a.MaKH.ToUpper() == MaKH.ToUpper().Trim()).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -41,11 +55,11 @@ namespace Account.Controller
         }
 
         [HttpPost]
-        public TaiKhoan RutTien(TaiKhoan taiKhoan)
+        public TaiKhoan CapNhatTaiKhoan(TaiKhoan taiKhoan)
         {
             try
             {
-                var tk = db.TaiKhoans.Where(a => a.MaSoTaiKhoan.ToLower().Trim() == taiKhoan.MaSoTaiKhoan.ToLower().Trim()).FirstOrDefault();
+                var tk = db.TaiKhoans.Where(a => a.MaSoTaiKhoan.ToUpper().Trim() == taiKhoan.MaSoTaiKhoan.ToUpper().Trim()).FirstOrDefault();
                 if (tk != null)
                 {
                     tk.SoDuKhaDung = taiKhoan.SoDuKhaDung;

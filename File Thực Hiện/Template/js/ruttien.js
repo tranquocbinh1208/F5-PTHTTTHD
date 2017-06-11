@@ -33,7 +33,7 @@ $(function () {
             giaoDich: {
                 MaGD: "GD",
                 MaKH: emptyString,
-                SoTien: emptyString,
+                SoTien: 0,
                 NoiDung: "Rut tien",
                 MaNV: loggedUserId,
                 NgayTao: new Date(),
@@ -69,10 +69,16 @@ $(function () {
                                 //Lấy tài khoản của khách hàng
                                 axios.get('http://localhost:9007/api/TaiKhoan/LayTaiKhoanTheoMaKH?MaKH=' + this.khachHang.MaKH)
                                     .then(response2 => {
-                                        this.taiKhoan = response2.data
-                                        this.display.account = true
+                                        if (response2.data != null) {
+                                            console.log(response2.data)
 
-                                        console.log(response2.data)
+                                            this.taiKhoan = response2.data
+                                            this.display.account = true
+
+                                        } else {
+                                            this.message.content = 'Không lấy được thông tin tài khoản của khách hàng ' + this.khachHang.HoTen
+                                            this.message.type = danger
+                                        }
                                     })
                                     .catch(e2 => {
                                         console.log(e2)
@@ -93,35 +99,18 @@ $(function () {
             },
 
             rutTien() {
-                if (this.message.content == emptyString) {
+                if (this.message.content == emptyString && this.giaoDich.SoTien > 0) {
 
                     //Thực hiện lệnh trừ tiền vào tài khoản
                     var newTK = this.taiKhoan
                     newTK.SoDuKhaDung -= this.giaoDich.SoTien
                     newTK.SoDuThuc -= this.giaoDich.SoTien
 
-                    axios.post('http://localhost:9007/api/taikhoan/RutTien', newTK)
+                    axios.post('http://localhost:9007/api/taikhoan/CapNhatTaiKhoan', newTK)
                         .then(response => {
                             console.log(response.data)
                             if (response.data != null) {
                                 this.taiKhoan = response.data
-
-                                //Thêm giao dịch rút tiền sau khi đã trừ tiền thành công    
-                                axios.put('http://localhost:9000/api/giaodichruttien/themgiaodich', this.giaoDich)
-                                    .then(response2 => {
-                                        console.log(response2.data)
-                                        if (response2.data != null) {
-                                            this.giaoDich = response2.data
-                                            this.message.content = 'Giao dịch đã thực hiện thành công'
-                                            this.message.type = success
-                                        } else {
-                                            this.message.content = "Giao dịch thực hiện không thành công, vui lòng thử lại"
-                                            this.message.type = danger
-                                        }
-                                    })
-                                    .catch(e => {
-                                        this.errors.push(e)
-                                    })
                             } else {
                                 this.message.content = "Giao dịch thực hiện không thành công, vui lòng thử lại"
                                 this.message.type = danger
@@ -130,6 +119,25 @@ $(function () {
                         .catch(e => {
                             this.errors.push(e)
                         })
+
+                    //Thêm giao dịch rút tiền sau khi đã trừ tiền thành công    
+                    axios.put('http://localhost:9000/api/giaodichruttien/themgiaodich', this.giaoDich)
+                        .then(response2 => {
+                            console.log(response2.data)
+                            if (response2.data != null) {
+                                this.giaoDich = response2.data
+                                this.message.content = 'Giao dịch đã thực hiện thành công'
+                                this.message.type = success
+                            } else {
+                                this.message.content = "Giao dịch thực hiện không thành công, vui lòng thử lại"
+                                this.message.type = danger
+                            }
+                        })
+                        .catch(e => {
+                            this.errors.push(e)
+                        })
+                } else {
+                    this.message.content = 'Vui lòng nhập số tiền > 0'
                 }
             },
 
@@ -141,7 +149,7 @@ $(function () {
                     this.message.content += "Vui lòng nhập số tiền cần rút > 0 \n"
                 }
                 if (this.giaoDich.SoTien > this.taiKhoan.SoDuKhaDung) {
-                    this.message.content += "Số tiền trong tài khoản không đủ để thực hiện giao dịch này \n"
+                    this.message.content += "Số dư trong tài khoản không đủ để thực hiện giao dịch này \n"
                 }
                 if (isNullOrEmptyString(this.giaoDich.NoiDung)) {
                     this.message.content += "Vui lòng nhập nội dung giao dịch \n"

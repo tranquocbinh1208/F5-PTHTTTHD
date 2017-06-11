@@ -177,9 +177,11 @@
 
                         <div class="form-group" v-show="display.account">
                             <label class="col-md-4 control-label" for="btnRutTien"></label>
-                            <div class="col-md-8">
-                                <button type="button" class="btn btn-primary" v-on:click="rutTien">Rút tiền</button>
-                                <button type="button" class="btn btn-default" v-on:click="clear">Giao dịch mới</button>
+                            <div class="col-md-5">
+                                <div class="btn-group btn-group-justified">
+                                    <a href="javascript:void(0)" class="btn btn-primary" v-on:click="rutTien">Rút tiền</a>
+                                    <a href="javascript:void(0)" class="btn btn-default" v-on:click="clear">Giao dịch mới</a>
+                                </div>
                             </div>
                         </div>
 
