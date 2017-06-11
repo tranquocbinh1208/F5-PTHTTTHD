@@ -53,5 +53,121 @@ namespace Customer.Controller
             }
             return null;
         }
+
+        [HttpGet]
+        public KhachHang[] LayKhachHangTheoThoiGian(DateTime tuNgay, DateTime denNgay)
+        {
+            try
+            {
+                return db.KhachHangs.Where(a => a.NgayTao >= tuNgay && a.NgayTao <= denNgay).ToArray();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        [HttpGet]
+        public List<KhachHangTheoNgay> ThongKeKhachHangTheoNgay(DateTime tuNgay, DateTime denNgay)
+        {
+            var list = new List<KhachHangTheoNgay>();
+            try
+            {
+                var currentDate = tuNgay;
+                while (currentDate <= denNgay)
+                {
+                    var count = db.KhachHangs.Where(a => a.NgayTao == currentDate).Count();
+                    var item = new KhachHangTheoNgay
+                    {
+                        Ngay = currentDate,
+                        Count = count
+                    };
+                    list.Add(item);
+                    currentDate = currentDate.AddDays(1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return list;
+        }
+
+        [HttpGet]
+        public List<KhachHangTheoThang> ThongKeKhachHangTheoThang(DateTime tuNgay, DateTime denNgay)
+        {
+            var list = new List<KhachHangTheoThang>();
+            var currentDate = tuNgay;
+            try
+            {
+                while (currentDate <= denNgay)
+                {
+                    var count = db.KhachHangs.Where(a => a.NgayTao == currentDate).Count();
+
+                    var item = list.Where(a => a.Thang == currentDate.Month && a.Nam == currentDate.Year).FirstOrDefault();
+                    if (item == null)
+                    {
+                        item = new KhachHangTheoThang
+                        {
+                            Nam = currentDate.Year,
+                            Thang = currentDate.Month,
+                            Count = count
+                        };
+                        list.Add(item);
+                    }
+                    else
+                    {
+                        item.Count += count;
+                    }
+
+                    currentDate = currentDate.AddDays(1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return list;
+        }
+
+        [HttpGet]
+        public List<KhachHangTheoNam> ThongKeKhachHangTheoNam(DateTime tuNgay, DateTime denNgay)
+        {
+            var list = new List<KhachHangTheoNam>();
+            var currentDate = tuNgay;
+            try
+            {
+                while (currentDate <= denNgay)
+                {
+                    var count = db.KhachHangs.Where(a => a.NgayTao == currentDate).Count();
+
+                    var item = list.Where(a => a.Nam == currentDate.Year).FirstOrDefault();
+                    if (item == null)
+                    {
+                        item = new KhachHangTheoNam
+                        {
+                            Nam = currentDate.Year,
+                            Count = count
+                        };
+                        list.Add(item);
+                    }
+                    else
+                    {
+                        item.Count += count;
+                    }
+
+                    currentDate = currentDate.AddDays(1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return list;
+        }
     }
 }

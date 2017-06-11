@@ -15,8 +15,9 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ruttien.js"></script>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -75,6 +76,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
+                        <a href="index.html"><i class="fa fa-fw fa-home"></i> Dashboard </a>
+                    </li>
+
+                    <li>
                         <a href="ruttien.html"><i class="fa fa-fw fa-credit-card"></i> Rút tiền </a>
                     </li>
 
@@ -91,11 +96,14 @@
                     </li>
 
                     <li>
-                        <a href="javascript:void(0)" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-line-chart"></i> Báo cáo thống kê <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-line-chart"></i> Báo cáo thống kê <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                         <ul id="submenu-1" class="collapse">
-                            <li><a href="baocaothang.html"><i class="fa fa-angle-right"></i> Theo tháng</a></li>
-                            <li><a href="baocaonam.html"><i class="fa fa-angle-right"></i> Theo năm</a></li>
-                            <li><a href="baocao.html"><i class="fa fa-angle-right"></i> Xem tất cả</a></li>
+                            <li><a href="thongkekhachhang.html"><i class="fa fa-angle-right"></i> Khách hàng</a></li>
+                            <li><a href="thongketaikhoan.html"><i class="fa fa-angle-right"></i> Tài khoản</a></li>
+                            <li><a href="thongkeruttien.html"><i class="fa fa-angle-right"></i> GD rút tiền</a></li>
+                            <li><a href="thongkechuyentien.html"><i class="fa fa-angle-right"></i> GD Chuyển tiền</a></li>
+                            <li><a href="thongkenaptien.html"><i class="fa fa-angle-right"></i> GD Nạp tiền</a></li>
+                            <li><a href="thongkesotietkiem.html"><i class="fa fa-angle-right"></i> Sổ tiết kiệm</a></li>
                         </ul>
                     </li>
 
@@ -149,7 +157,7 @@
                         <div class="form-group" v-show="display.account">
                             <label class="col-md-4 control-label">Số dư khả dụng</label>
                             <div class="col-md-5">
-                                <input readonly type="number" placeholder="Số dư khả dụng" class="form-control input-md" v-model="taiKhoan.SoDuKhaDung">
+                                <input readonly type="text" placeholder="Số dư khả dụng" class="form-control input-md" v-model="formatCurrency(taiKhoan.SoDuKhaDung)">
                             </div>
                         </div>
 

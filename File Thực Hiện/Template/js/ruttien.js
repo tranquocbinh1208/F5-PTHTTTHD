@@ -51,6 +51,9 @@ $(function () {
         },
 
         methods: {
+            formatCurrency(money) {
+                return money.toLocaleString()
+            },
 
             kiemTraTaiKhoan() {
 
