@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 
-
-
-
 <html lang="en">
 
 <head>
@@ -17,7 +14,9 @@
     <link href="css/mystyle.css" rel="stylesheet">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/myjs.js"></script>
+    <script src="js/naptien.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,16 +24,10 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-
-
 </head>
 
 <body>
-
-    </div>
     <div>
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -94,13 +87,13 @@
                         <a href="chuyentien.html"><i class="fa fa-fw fa-exchange"></i> Chuyển tiền </a>
                     </li>
 
-                    <li>
+                      <!--<li>
                         <a href="naptien.html"><i class="fa fa-fw fa-plus-square"></i> Nạp tiền </a>
                     </li>
 
                     <li>
                         <a href="lapsotietkiem.html"><i class="fa fa-fw fa-book"></i> Lập sổ tiết kiệm </a>
-                    </li>
+                    </li>-->
 
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-line-chart"></i> Báo cáo thống kê <i class="fa fa-fw fa-angle-down pull-right"></i></a>
@@ -120,7 +113,7 @@
     </div>
     <div id="wrapper">
         <div id="page-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" class="napTienApp">
                 <!-- Page Heading -->
                 <div class="row" id="main">
                     <div class="col-sm-12 col-md-12 well" id="content">
