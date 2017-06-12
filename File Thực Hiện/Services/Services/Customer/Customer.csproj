@@ -96,7 +96,6 @@
     <Compile Include="Controller\KhachHangController.cs" />
     <Compile Include="Model\DataContext.cs" />
     <Compile Include="Model\KhachHang.cs" />
-    <Compile Include="Model\ThongKe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

@@ -12,7 +12,8 @@
     {
         GuiTien = 0,
         RutTien = 1,
-        ChuyenTien = 2
+        ChuyenTien = 2,
+        LapSoTietKiem = 3
     }
 
     public enum TrangThaiKhachHang

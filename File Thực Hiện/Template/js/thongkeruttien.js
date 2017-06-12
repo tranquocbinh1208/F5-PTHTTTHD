@@ -13,52 +13,48 @@ function isNullOrEmptyString(str) {
       return (str == emptyString || str == undefined || str == null)
 }
 
-var khachHangs = []
+var giaoDichs = []
 
 function LoadTable() {
-      $('#khachHangs').dataTable({
+      $('#giaoDichs').dataTable({
             destroy: true,
-            data: khachHangs,
+            data: giaoDichs,
             columns: [{
-                        data: "MaKH",
+                        data: "MaGD",
                         orderable: false,
                         visible: false
                   },
                   {
-                        data: "HoTen",
-                        title: "Họ tên",
+                        data: "MaKH",
+                        title: "Mã KH",
                   },
                   {
-                        data: "NgaySinh",
-                        title: "Ngày sinh",
+                        data: "SoTien",
+                        title: "Số tiền",
                         render: function (data, type, row) {
-                              return moment(data).format('MM/DD/YYYY');
+                              return data.toLocaleString()
                         }
                   },
                   {
-                        data: "GioiTinh",
-                        title: "Giới tính",
+                        data: "NoiDung",
+                        title: "Nội dung",
+                  },
+                  {
+                        data: "MaNV",
+                        title: "NV thực hiện",
+                  },
+                  {
+                        data: "TrangThai",
+                        title: "Trạng thái",
                         render: function (data, type, row) {
-                              return data ? 'Nam' : 'Nữ';
+                              return data == 0 ? 'Đang xử lý' : (data == 1 ? 'Thành công' : (data == 2 ? 'Thất bại' : 'Hủy'))
                         }
-                  },
-                  {
-                        data: "SDT",
-                        title: "SDT",
-                  },
-                  {
-                        data: "CMND",
-                        title: "CMND",
-                  },
-                  {
-                        data: "DiaChi",
-                        title: "Địa chỉ",
                   },
                   {
                         data: "NgayTao",
-                        title: "Ngày tạo",
+                        title: "Ngày giao dịch",
                         render: function (data, type, row) {
-                              return moment(data).format('MM/DD/YYYY HH:mm:ss');
+                              return moment(data).format('MM/DD/YYYY HH:mm:ss')
                         }
                   }
             ],
@@ -67,17 +63,17 @@ function LoadTable() {
 
 $(function () {
 
-      var thongKeKhachHangApp = new Vue({
+      var thongKeGiaoDichApp = new Vue({
 
-            el: '#thongKeKhachHangApp',
+            el: '#thongKeGiaoDichApp',
 
             data: {
                   tuNgay: moment().add(-14, 'days').format('MM/DD/YYYY'),
                   denNgay: moment().format('MM/DD/YYYY'),
 
-                  khTheoNgays: [],
-                  khTheoThangs: [],
-                  khTheoNams: [],
+                  gdTheoNgays: [],
+                  gdTheoThangs: [],
+                  gdTheoNams: [],
 
                   message: {
                         content: emptyString,
@@ -85,7 +81,7 @@ $(function () {
                   },
 
                   display: {
-                        khTheoNgay: true
+                        gdTheoNgay: true
                   }
             },
             methods: {
@@ -96,23 +92,23 @@ $(function () {
 
                   fetchData() {
 
-                        var dayDiff = moment(this.denNgay).dayOfYear() - moment(this.tuNgay).dayOfYear() //Math.abs(this.tuNgay.getTime() - this.denNgay.getTime());
+                        var dayDiff = moment(this.denNgay).dayOfYear() - moment(this.tuNgay).dayOfYear()
                         if (dayDiff > 14) {
                               this.message.content = 'Chỉ hỗ trợ xem báo cáo này trong vòng 2 tuần'
                               this.message.type = warning
-                              this.display.khTheoNgay = false
+                              this.display.gdTheoNgay = false
                         } else {
-                              this.display.khTheoNgay = true
+                              this.display.gdTheoNgay = true
                               this.message.content = emptyString
 
-                              axios.get('http://localhost:9006/api/khachhang/ThongKeKhachHangTheoNgay?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
+                              axios.get('http://localhost:9000/api/GiaoDichRutTien/ThongKeGiaoDichTheoNgay?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
                                     .then(res => {
                                           if (res.data != null) {
-                                                this.khTheoNgays = res.data
+                                                this.gdTheoNgays = res.data
 
                                                 var points = []
-                                                for (var index = 0; index < this.khTheoNgays.length; index++) {
-                                                      var a = this.khTheoNgays[index];
+                                                for (var index = 0; index < this.gdTheoNgays.length; index++) {
+                                                      var a = this.gdTheoNgays[index];
                                                       var p = {
                                                             x: moment(a.Ngay).get('date'),
                                                             y: a.Count
@@ -127,14 +123,14 @@ $(function () {
                                     })
                         }
 
-                        axios.get('http://localhost:9006/api/khachhang/ThongKeKhachHangTheoThang?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
+                        axios.get('http://localhost:9000/api/GiaoDichRutTien/ThongKeGiaoDichTheoThang?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
                               .then(res => {
                                     if (res.data != null) {
-                                          this.khTheoThangs = res.data
+                                          this.gdTheoThangs = res.data
 
                                           var points = []
-                                          for (var index = 0; index < this.khTheoThangs.length; index++) {
-                                                var a = this.khTheoThangs[index];
+                                          for (var index = 0; index < this.gdTheoThangs.length; index++) {
+                                                var a = this.gdTheoThangs[index];
                                                 var p = {
                                                       x: a.Thang,
                                                       y: a.Count
@@ -148,14 +144,14 @@ $(function () {
                                     console.log(e2)
                               })
 
-                        axios.get('http://localhost:9006/api/khachhang/ThongKeKhachHangTheoNam?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
+                        axios.get('http://localhost:9000/api/GiaoDichRutTien/ThongKeGiaoDichTheoNam?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
                               .then(res => {
                                     if (res.data != null) {
-                                          this.khTheoNams = res.data
+                                          this.gdTheoNams = res.data
 
                                           var points = []
-                                          for (var index = 0; index < this.khTheoNams.length; index++) {
-                                                var a = this.khTheoNams[index];
+                                          for (var index = 0; index < this.gdTheoNams.length; index++) {
+                                                var a = this.gdTheoNams[index];
                                                 var p = {
                                                       x: a.Nam,
                                                       y: a.Count
@@ -169,10 +165,10 @@ $(function () {
                                     console.log(e2)
                               })
 
-                        axios.get('http://localhost:9006/api/khachhang/LayKhachHangTheoThoiGian?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
+                        axios.get('http://localhost:9000/api/GiaoDichRutTien/LayGiaoDichTheoThoiGian?tuNgay=' + this.tuNgay + '&denNgay=' + this.denNgay)
                               .then(res => {
                                     if (res.data != null) {
-                                          khachHangs = res.data
+                                          giaoDichs = res.data
                                           LoadTable()
                                     } else {}
                               })
@@ -185,7 +181,7 @@ $(function () {
                         var chart = new CanvasJS.Chart("chartTheoNgay", {
                               theme: "theme1",
                               title: {
-                                    text: "Khách hàng mới theo ngày"
+                                    text: "Giao dịch mới theo ngày"
                               },
                               animationEnabled: true,
                               axisX: {
@@ -210,7 +206,7 @@ $(function () {
                         var chart = new CanvasJS.Chart("chartTheoThang", {
                               theme: "theme1",
                               title: {
-                                    text: "Khách hàng mới theo tháng"
+                                    text: "Giao dịch mới theo tháng"
                               },
                               animationEnabled: true,
                               axisX: {
@@ -235,7 +231,7 @@ $(function () {
                         var chart = new CanvasJS.Chart("chartTheoNam", {
                               theme: "theme1",
                               title: {
-                                    text: "Khách hàng mới theo năm"
+                                    text: "Giao dịch mới theo năm"
                               },
                               animationEnabled: true,
                               axisX: {

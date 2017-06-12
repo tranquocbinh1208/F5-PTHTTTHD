@@ -8,7 +8,24 @@ namespace Common
 
         public static string GetTransactionID(LoaiGiaoDich loaiGd, DateTime date)
         {
-            return $"GD{(loaiGd == LoaiGiaoDich.GuiTien ? "GT" : (loaiGd == LoaiGiaoDich.RutTien ? "RT" : "CT"))}{date.ToString("yyyy-MM-dd-HH-mm-ss")}";
+            var gd = string.Empty;
+            switch (loaiGd)
+            {
+                case LoaiGiaoDich.GuiTien:
+                    gd = "GT";
+                    break;
+                case LoaiGiaoDich.RutTien:
+                    gd = "RT";
+                    break;
+                case LoaiGiaoDich.ChuyenTien:
+                    gd = "CT";
+                    break;
+                default:
+                    gd = "STK";
+                    break;
+            }
+
+            return $"GD{gd}{date.ToString("yyyy-MM-dd-HH-mm-ss")}";
         }
 
         public static string GetCurrencyFormat(decimal money)

@@ -1,6 +1,8 @@
-﻿using Microsoft.Owin.Hosting;
+﻿using Common;
+using Microsoft.Owin.Hosting;
 using System;
 using System.Configuration;
+using Transfer.Model;
 
 namespace Transfer
 {
@@ -8,6 +10,42 @@ namespace Transfer
     {
         static void Main(string[] args)
         {
+            //try
+            //{
+            //    using (var db = new DataContext())
+            //    {
+            //        var currentDate = DateTime.Today.AddYears(-1);
+            //        while (currentDate <= DateTime.Today)
+            //        {
+            //            var rand = new Random();
+            //            var countPerDay = rand.Next(1, 20);
+            //            for (int i = 0; i < countPerDay; i++)
+            //            {
+            //                var item = new GiaoDichChuyenTien
+            //                {
+            //                    MaKHGui = $"KH{i}",
+            //                    MaKHNhan = $"KH{i + 1}",
+            //                    MaNV = $"NV{i}",
+            //                    NoiDung = $"Chuyen tien tu {i} sang {i + 1}",
+            //                    SoTien = 100000,
+            //                    MaGD = AppUtils.GetTransactionID(LoaiGiaoDich.ChuyenTien, currentDate) + i.ToString(),
+            //                    TrangThai = TrangThaiGiaoDich.DangXuLy,
+            //                    NgayTao = currentDate
+            //                };
+
+            //                db.GiaoDichChuyenTiens.Add(item);
+            //                db.SaveChanges();
+            //            }
+
+            //            currentDate = currentDate.AddDays(1);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
             string baseAddress = $"http://localhost:{ConfigurationManager.AppSettings["port"] ?? "9003"}/";
 
             using (WebApp.Start<Startup>(url: baseAddress))

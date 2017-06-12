@@ -1,6 +1,7 @@
 ﻿using Common;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -76,7 +77,7 @@ namespace Transfer.Controller
         /// <param name="denNgay">ngày kết thúc</param>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<GiaoDichChuyenTien> LayGiaoDichTheoNgay(DateTime tuNgay, DateTime denNgay)
+        public IEnumerable<GiaoDichChuyenTien> LayGiaoDichTheoThoiGian(DateTime tuNgay, DateTime denNgay)
         {
             try
             {
@@ -141,6 +142,108 @@ namespace Transfer.Controller
                 Console.WriteLine(ex.Message);
             }
             return null;
+        }
+
+        [HttpGet]
+        public List<ThongKeTheoNgay> ThongKeGiaoDichTheoNgay(DateTime tuNgay, DateTime denNgay)
+        {
+            var list = new List<ThongKeTheoNgay>();
+            try
+            {
+                var currentDate = tuNgay;
+                while (currentDate <= denNgay)
+                {
+                    var count = db.GiaoDichChuyenTiens.Where(a => DbFunctions.TruncateTime(a.NgayTao) == currentDate.Date).Count();
+                    var item = new ThongKeTheoNgay
+                    {
+                        Ngay = currentDate,
+                        Count = count
+                    };
+                    list.Add(item);
+                    currentDate = currentDate.AddDays(1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return list;
+        }
+
+        [HttpGet]
+        public List<ThongKeTheoThang> ThongKeGiaoDichTheoThang(DateTime tuNgay, DateTime denNgay)
+        {
+            var list = new List<ThongKeTheoThang>();
+            var currentDate = tuNgay;
+            try
+            {
+                while (currentDate <= denNgay)
+                {
+                    var count = db.GiaoDichChuyenTiens.Where(a => DbFunctions.TruncateTime(a.NgayTao) == currentDate.Date).Count();
+
+                    var item = list.Where(a => a.Thang == currentDate.Month && a.Nam == currentDate.Year).FirstOrDefault();
+                    if (item == null)
+                    {
+                        item = new ThongKeTheoThang
+                        {
+                            Nam = currentDate.Year,
+                            Thang = currentDate.Month,
+                            Count = count
+                        };
+                        list.Add(item);
+                    }
+                    else
+                    {
+                        item.Count += count;
+                    }
+
+                    currentDate = currentDate.AddDays(1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return list;
+        }
+
+        [HttpGet]
+        public List<ThongKeTheoNam> ThongKeGiaoDichTheoNam(DateTime tuNgay, DateTime denNgay)
+        {
+            var list = new List<ThongKeTheoNam>();
+            var currentDate = tuNgay;
+            try
+            {
+                while (currentDate <= denNgay)
+                {
+                    var count = db.GiaoDichChuyenTiens.Where(a => DbFunctions.TruncateTime(a.NgayTao) == currentDate.Date).Count();
+
+                    var item = list.Where(a => a.Nam == currentDate.Year).FirstOrDefault();
+                    if (item == null)
+                    {
+                        item = new ThongKeTheoNam
+                        {
+                            Nam = currentDate.Year,
+                            Count = count
+                        };
+                        list.Add(item);
+                    }
+                    else
+                    {
+                        item.Count += count;
+                    }
+
+                    currentDate = currentDate.AddDays(1);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return list;
         }
     }
 }

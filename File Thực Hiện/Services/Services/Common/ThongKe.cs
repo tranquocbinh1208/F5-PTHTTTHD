@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Customer.Model
+namespace Common
 {
-    public class KhachHangTheoNgay
+    public class ThongKeTheoNgay
     {
         public DateTime Ngay { get; set; }
         public int Count { get; set; }
     }
 
-    public class KhachHangTheoThang
+    public class ThongKeTheoThang
     {
         public int Thang { get; set; }
         public int Nam { get; set; }
         public int Count { get; set; }
     }
 
-    public class KhachHangTheoNam
+    public class ThongKeTheoNam
     {
         public int Nam { get; set; }
         public int Count { get; set; }

@@ -114,7 +114,6 @@
                         <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-line-chart"></i> Báo cáo thống kê <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                         <ul id="submenu-1" class="collapse">
                             <li><a href="thongkekhachhang.html"><i class="fa fa-angle-right"></i> Khách hàng</a></li>
-                            <li><a href="thongketaikhoan.html"><i class="fa fa-angle-right"></i> Tài khoản</a></li>
                             <li><a href="thongkeruttien.html"><i class="fa fa-angle-right"></i> GD rút tiền</a></li>
                             <li><a href="thongkechuyentien.html"><i class="fa fa-angle-right"></i> GD Chuyển tiền</a></li>
                             <li><a href="thongkenaptien.html"><i class="fa fa-angle-right"></i> GD Nạp tiền</a></li>
@@ -202,8 +201,8 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="col-md-9" v-show="display.khTheoNgay">
-                                            <div id="chartContainer1" style="width: 100%;display: inline-block;"></div>
+                                        <div class="col-md-9" v-show="display.khTheoNgay" style="min-height: 400px;">
+                                            <div id="chartTheoNgay" style="width: 100%;"></div>
                                         </div>
 
                                         <div class="form-group" v-show="message.content != ''">
@@ -218,47 +217,59 @@
                             <div class="tab-pane" id="profile">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <table class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Tháng</th>
-                                                    <th>Năm</th>
-                                                    <th>Số lượng khách hàng</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr v-for="item in khTheoThangs">
-                                                    <td>{{item.Thang}}</td>
-                                                    <td>{{item.Nam}}</td>
-                                                    <td>{{item.Count}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+
+                                        <div class="col-md-3" v-show="display.khTheoNgay">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tháng</th>
+                                                        <th>Năm</th>
+                                                        <th>Số lượng khách hàng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="item in khTheoThangs">
+                                                        <td>{{item.Thang}}</td>
+                                                        <td>{{item.Nam}}</td>
+                                                        <td>{{item.Count}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="col-md-9" style="min-height: 400px;">
+                                            <div id="chartTheoThang" style="width: 100%;"></div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane" id="messages">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <table class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Năm</th>
-                                                    <th>Số lượng khách hàng</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr v-for="item in khTheoNams">
-                                                    <td>{{item.Nam}}</td>
-                                                    <td>{{item.Count}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="col-md-3">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Năm</th>
+                                                        <th>Số lượng khách hàng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="item in khTheoNams">
+                                                        <td>{{item.Nam}}</td>
+                                                        <td>{{item.Count}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-9" style="min-height: 400px;">
+                                            <div id="chartTheoNam" style="width: 100%;"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 

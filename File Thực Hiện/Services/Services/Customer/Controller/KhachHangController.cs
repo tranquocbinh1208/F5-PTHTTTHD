@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Common;
 
 namespace Customer.Controller
 {
@@ -69,16 +70,16 @@ namespace Customer.Controller
         }
 
         [HttpGet]
-        public List<KhachHangTheoNgay> ThongKeKhachHangTheoNgay(DateTime tuNgay, DateTime denNgay)
+        public List<ThongKeTheoNgay> ThongKeKhachHangTheoNgay(DateTime tuNgay, DateTime denNgay)
         {
-            var list = new List<KhachHangTheoNgay>();
+            var list = new List<ThongKeTheoNgay>();
             try
             {
                 var currentDate = tuNgay;
                 while (currentDate <= denNgay)
                 {
-                    var count = db.KhachHangs.Where(a => a.NgayTao == currentDate).Count();
-                    var item = new KhachHangTheoNgay
+                    var count = db.KhachHangs.Where(a => a.NgayTao.Date == currentDate.Date).Count();
+                    var item = new ThongKeTheoNgay
                     {
                         Ngay = currentDate,
                         Count = count
@@ -96,20 +97,20 @@ namespace Customer.Controller
         }
 
         [HttpGet]
-        public List<KhachHangTheoThang> ThongKeKhachHangTheoThang(DateTime tuNgay, DateTime denNgay)
+        public List<ThongKeTheoThang> ThongKeKhachHangTheoThang(DateTime tuNgay, DateTime denNgay)
         {
-            var list = new List<KhachHangTheoThang>();
+            var list = new List<ThongKeTheoThang>();
             var currentDate = tuNgay;
             try
             {
                 while (currentDate <= denNgay)
                 {
-                    var count = db.KhachHangs.Where(a => a.NgayTao == currentDate).Count();
+                    var count = db.KhachHangs.Where(a => a.NgayTao.Date == currentDate.Date).Count();
 
                     var item = list.Where(a => a.Thang == currentDate.Month && a.Nam == currentDate.Year).FirstOrDefault();
                     if (item == null)
                     {
-                        item = new KhachHangTheoThang
+                        item = new ThongKeTheoThang
                         {
                             Nam = currentDate.Year,
                             Thang = currentDate.Month,
@@ -134,20 +135,20 @@ namespace Customer.Controller
         }
 
         [HttpGet]
-        public List<KhachHangTheoNam> ThongKeKhachHangTheoNam(DateTime tuNgay, DateTime denNgay)
+        public List<ThongKeTheoNam> ThongKeKhachHangTheoNam(DateTime tuNgay, DateTime denNgay)
         {
-            var list = new List<KhachHangTheoNam>();
+            var list = new List<ThongKeTheoNam>();
             var currentDate = tuNgay;
             try
             {
                 while (currentDate <= denNgay)
                 {
-                    var count = db.KhachHangs.Where(a => a.NgayTao == currentDate).Count();
+                    var count = db.KhachHangs.Where(a => a.NgayTao.Date == currentDate.Date).Count();
 
                     var item = list.Where(a => a.Nam == currentDate.Year).FirstOrDefault();
                     if (item == null)
                     {
-                        item = new KhachHangTheoNam
+                        item = new ThongKeTheoNam
                         {
                             Nam = currentDate.Year,
                             Count = count
